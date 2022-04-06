@@ -1,0 +1,35 @@
+{
+  "dependencies": {
+    "jest": "^27.5.1"
+  },
+  "name": "algorithms-in",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "@babel/core": "^7.17.8",
+    "@babel/preset-env": "^7.16.11",
+    "babel-jest": "^27.5.1"
+  },
+  "scripts": {
+    "test": "NODE_ENV=test jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Doaa-Ismael/algorithms-in-js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Doaa-Ismael/algorithms-in-js/issues"
+  },
+  "homepage": "https://github.com/Doaa-Ismael/algorithms-in-js#readme",
+  "jest": {
+    "transform": {
+      "\\.[jt]sx?$": "babel-jest"
+    },
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/"
+    ]
+  }
+}
