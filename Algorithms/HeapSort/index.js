@@ -1,8 +1,10 @@
+export const parent = (i) => Math.floor(((i-1) / 2));
+
 const left = (i) => 2 * i + 1;
 
 const right = (i) => 2 * i + 2;
 
-const maxHeapify = (array, i) => {
+export const maxHeapify = (array, i) => {
     let largestValueIndex = i;
     const current = array[i];
     const l = left(i);
@@ -18,14 +20,12 @@ const maxHeapify = (array, i) => {
     }
 }
 
-
-const buildMaxHeap = (array) => {
+export const buildMaxHeap = (array) => {
     const length = parseInt((array.length / 2).toString());
     for(let i = length; i>=0 ; i--) {
         maxHeapify(array, i);
     }
 }
-
 
 const heapSort = (array) => {
     const sortedArray = [];
