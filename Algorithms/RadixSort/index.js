@@ -3,22 +3,29 @@ const getMaxDigits = (A) => {
     for (let i = 0; i < A.length; i++) {
         const digitsOfTheNumber = A[i].toString().length;
         if (digitsOfTheNumber > maxDigit)
-            maxDigit = A[0].toString().length;
+            maxDigit = A[i].toString().length;
     }
     return maxDigit;
+}
+
+const getNumAtDigit = (num, digit) => {
+    const numAsString = num.toString();
+    const numAtDigit = numAsString[numAsString.length  - 1 - digit];
+    return numAtDigit ? numAtDigit : 0;
 }
 
 const countingSortNumbersWithBaseTen = (A, d) => {
     const count = new Array(10).fill(0);
     const result = new Array(A.length);
     for(let i = 0; i < A.length; i++) {
-        count[A[i].toString()[d]]++;
+        const num = getNumAtDigit(A[i], d);
+        count[num]++;
     }
     for(let i = 1; i < 10; i++) {
         count[i] += count[i-1];
     }
     for(let i = A.length - 1; i >= 0; i--) {
-        const currentDigitValue = A[i].toString()[d];
+        const currentDigitValue = getNumAtDigit(A[i], d);
         result[count[currentDigitValue]- 1] = A[i];
         count[currentDigitValue]--;
     }
@@ -27,7 +34,7 @@ const countingSortNumbersWithBaseTen = (A, d) => {
 
 const radixSort = (A) => {
     const d = getMaxDigits(A);
-    for(let i = d - 1; i >= 0; i--)
+    for(let i = 0; i < d; i++)
         countingSortNumbersWithBaseTen(A, i);
     return A;
 }
