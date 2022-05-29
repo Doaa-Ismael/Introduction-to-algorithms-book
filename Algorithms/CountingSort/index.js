@@ -7,7 +7,7 @@ const countingSort = (A, maxNumberInA) => {
     for(let i = 1; i <= maxNumberInA; i++) {
         count[i] += count[i-1];
     }
-    for(let i = 0; i < A.length; i++) {
+    for(let i = A.length - 1; i >= 0 ; i--) {
         result[count[A[i]] - 1] = A[i];
         count[A[i]]--;
     }
