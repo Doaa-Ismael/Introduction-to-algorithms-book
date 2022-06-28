@@ -1,6 +1,6 @@
 import {partition} from "../../Algorithms/QuickSort/withLomutoPartioning";
 
-const findTheIthOrderStatisticRecursively = (a, left, right, order) => {
+export const findTheIthOrderStatisticRecursively = (a, left, right, order) => {
     if(left === right) return a[left];
 
     const partitionIndex = partition(a, left, right);
@@ -15,4 +15,21 @@ const findTheIthOrderStatisticRecursively = (a, left, right, order) => {
 }
 
 
-export default findTheIthOrderStatisticRecursively;
+export const findTheIthOrderStatisticIteratively= (a, left, right, order) => {
+    let l = left, r = right, o = order;
+    while (l <= r) {
+        if(l === r) return a[l];
+        const partitionIndex = partition(a, l, r);
+        const numberOfElementInLeftPartition = partitionIndex - l + 1;
+        if(numberOfElementInLeftPartition === o)  return a[partitionIndex];
+
+        if(o < numberOfElementInLeftPartition) {
+            r = partitionIndex - 1;
+        }
+        else {
+            l = partitionIndex + 1;
+            o = o - numberOfElementInLeftPartition;
+        }
+    }
+
+}
