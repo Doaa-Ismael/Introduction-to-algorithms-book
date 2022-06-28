@@ -1,5 +1,5 @@
 
-const partition = (array, l, r) => {
+export const partition = (array, l, r) => {
     const x = array[r];
     let i = l - 1;
     for(let j = l; j<r ; j++){
