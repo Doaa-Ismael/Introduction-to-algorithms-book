@@ -19,6 +19,7 @@ Book: introduction to algorithms
 
 
 ### Problems
-- Find the maximum subarray.
-- Find the iTh order statistic number in an array.
+- Find the maximum subarray. O(n)
+- Find the iTh order statistic number in an array. O(n)
+- Find the median of two sorted arrays. O(n log (n) )
 
