@@ -1,29 +1,32 @@
 
-export const getMedianIndex = (n) => Math.floor((n + 1) / 2) - 1;
+const findTheMedianOfTwoSortedArrays= (smallerArray, biggerArray, l = 0, r = smallerArray.length - 1) => {
 
-const findTheMedianOfTwoSortedArrays = (array1, array2) => {
-    const n1 = array1.length;
-    const n2 = array2.length;
+    if(smallerArray.length > biggerArray.length) return findTheMedianOfTwoSortedArrays(smallerArray, biggerArray);
 
-    const median1Index = getMedianIndex(n1);
-    const median2Index =  getMedianIndex(n2)
+    const n1 = smallerArray.length;
+    const n2 = biggerArray.length;
 
-    const median1 = array1[median1Index];
-    const median2 = array2[median2Index];
+    const half = Math.floor( (n1 + n2 + 1 ) / 2);
 
+    // there is no - 1 here because the left and right are already zero-indexed.
+    const splitSmallerArrayIndex = Math.floor((l + r) / 2) ;
+    // - 1 for splitBiggerArrayIndex because it is zero index and - 1 for splitSmallerArrayIndex.
+    const splitBiggerArrayIndex = half - splitSmallerArrayIndex - 2 ;
+    const leftOfTheSmallerArray = smallerArray[splitSmallerArrayIndex] != null ? smallerArray[splitSmallerArrayIndex] : Number.NEGATIVE_INFINITY;
+    const rightOfTheSmallerArray = smallerArray[splitSmallerArrayIndex + 1]  != null ? smallerArray[splitSmallerArrayIndex + 1] : Number.POSITIVE_INFINITY;
+    const leftOfTheBiggerArray = biggerArray[splitBiggerArrayIndex] != null ?  biggerArray[splitBiggerArrayIndex] : Number.NEGATIVE_INFINITY;
+    const rightOfTheBiggerArray =  biggerArray[splitBiggerArrayIndex + 1] != null ? biggerArray[splitBiggerArrayIndex + 1] : Number.POSITIVE_INFINITY;
 
-    if(median1 === median2) return  median1;
-    if(n1 === 2 ||  n2 === 2)  {
-        const medianIndex = Math.floor(getMedianIndex(n1 + n2));
-        return [...array1, ...array2].sort((a, b) => a- b)[medianIndex];
-    }
+    if(leftOfTheSmallerArray <= rightOfTheBiggerArray && leftOfTheBiggerArray <= rightOfTheSmallerArray)
+        return Math.max(leftOfTheSmallerArray, leftOfTheBiggerArray);
 
-    if(median1 < median2)
-        return findTheMedianOfTwoSortedArrays(array1.slice(median1Index), array2.slice(0, median2Index + 1));
+    if(leftOfTheSmallerArray > rightOfTheBiggerArray)
+        return findTheMedianOfTwoSortedArrays(smallerArray, biggerArray, l, splitSmallerArrayIndex - 1);
 
-    return findTheMedianOfTwoSortedArrays(array1.slice(0, median1Index + 1 ), array2.slice(median2Index));
+    return findTheMedianOfTwoSortedArrays(smallerArray, biggerArray, splitSmallerArrayIndex + 1, r);
 
 }
 
 export default findTheMedianOfTwoSortedArrays;
+
 
