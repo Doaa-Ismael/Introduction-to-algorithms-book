@@ -15,7 +15,7 @@ Book: introduction to algorithms
 
 ### Data Structures
 - Max Priority Queue.
-
+- Double Ended Queue.
 
 
 ### Problems
