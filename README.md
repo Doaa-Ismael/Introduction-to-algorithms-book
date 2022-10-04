@@ -24,4 +24,5 @@ Book: introduction to algorithms
 - Find the median of two sorted arrays. O(n log (n) )
 - Implement queue with two stacks.
 - Implement stack with a linked list.
+- Reverse linked list. O(n)
 
