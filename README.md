@@ -16,7 +16,7 @@ Book: introduction to algorithms
 ### Data Structures
 - Max Priority Queue.
 - Double Ended Queue.
-
+- Binary Search Tree.
 
 ### Problems
 - Find the maximum subarray. O(n)
